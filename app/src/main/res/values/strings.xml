@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MoneyPayDemo</string>
+    <string name="warm_text">重要说明: 本Demo为了方便向商户展示支付宝的支付流程，所以订单信息的加签过程放在客户端完成； 在商户的真实App内，为了防止商户私密数据泄露，造成不必要的资金损失，及面临各种安全风险； 商户privatekey等数据严禁放在客户端，订单信息的加签过程也务必放在服务端完成； 若商户接入时不遵照此说明，因此造成了损失，需自行承担。</string>
+    <string name="union_pay_tn">交易流水号</string>
+</resources>

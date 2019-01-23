@@ -1,0 +1,57 @@
+// 项目统一编译参数配置
+ext {
+
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "26.0.3",
+            minSdkVersion    : 14,
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : "1.0",
+    ]
+
+    app = [
+            // 数据库名称
+            databaseName   : "mt.db",
+            // 数据库版本
+            databaseVersion: 1
+    ]
+
+    version = [
+            // 安卓support版本
+            androidSupportSdkVersion: "28.0.0",
+            // Tinker热修复插件版本号
+            tinkerversion           : "1.9.2",
+            // retrofit版本
+            retrofitSdkVersion      : "2.3.0",
+            // dagger2版本
+            dagger2SdkVersion       : "2.12",
+            // 图片框架glide版本
+            glideSdkVersion         : "4.2.0",
+            // butterknife
+            butterknifeSdkVersion   : "8.8.1",
+            // rx
+            rxlifecycleSdkVersion   : "1.0",
+            rxlifecycle2SdkVersion  : "2.2.0",
+            espressoSdkVersion      : "3.0.1",
+            canarySdkVersion        : "1.5",
+    ]
+
+    dependencies = [
+            // 安卓support
+            "support-v4"     : "com.android.support:support-v4:${version["androidSupportSdkVersion"]}",
+            "appcompat-v7"   : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
+
+            "design"         : "com.android.support:design:${version["androidSupportSdkVersion"]}",
+            "cardview-v7"    : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
+            "recyclerview-v7": "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
+
+            "support-vector" : "com.android.support:support-vector-drawable:${version["androidSupportSdkVersion"]}",
+            "annotations"    : "com.android.support:support-annotations:${version["androidSupportSdkVersion"]}",
+            "constraint"     : "com.android.support.constraint:constraint-layout:1.0.2",
+
+            "junit"          : "junit:junit:4.12",
+            "runner"         : "com.android.support.test:runner:1.0.1",
+            "espresso-core"  : "com.android.support.test.espresso:espresso-core:2.2.2",
+    ]
+}

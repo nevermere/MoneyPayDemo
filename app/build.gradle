@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    defaultConfig {
+        applicationId "com.linyang.pay"
+
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    sourceSets {
+        main {
+            // jni库的调用会到资源文件夹下libs里面找so文件
+            jniLibs.srcDirs = ['libs', 'arm64-v8a', 'armeabi', 'armeabi-v7a']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation rootProject.ext.dependencies["junit"]
+    androidTestImplementation(rootProject.ext.dependencies["espresso-core"], {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    // 安卓support
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["recyclerview-v7"]
+    implementation rootProject.ext.dependencies["cardview-v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["constraint"]
+    // RxJava2
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    // RxLifecycle2
+    //implementation "com.trello.rxlifecycle2:rxlifecycle:2.2.0"
+    //implementation "com.trello.rxlifecycle2:rxlifecycle-components:2.1.0"
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    // OkHttp3
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    // HttpLogging
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.4'
+    implementation 'com.umeng.analytics:analytics:6.1.3'
+    // Butterknife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor "com.jakewharton:butterknife-compiler:8.8.1"
+    // 第三方Material Design Dialog
+    implementation 'com.lb:materialdesigndialog:1.0.0'
+    // 自定义BottomNavigationView
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.2'
+    // 刷新库
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    // 微信支付SDK
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.6'
+    // SVG转path
+    //    implementation 'com.caverock:androidsvg-aar:1.3'
+    // 支付宝SDK
+    implementation files('libs/alipaySdk-20180601.jar')
+    // 银联支付SDK
+    implementation files('libs/UPPayAssistEx.jar')
+    implementation files('libs/UPPayPluginExPro.jar')
+    implementation files('libs/androidsvg-1.3.jar')
+}
